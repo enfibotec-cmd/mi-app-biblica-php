@@ -1,1 +1,17 @@
+/* Ajustes finos de lectura */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
 
+.bible-text {
+  text-align: justify;
+}
+
+/* Transición suave al cambiar entre modo oscuro y claro */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.offcanvas-body .list-group-item.active {
+  font-weight: 600;
+}
