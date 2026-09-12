@@ -1,1 +1,33 @@
 
+{
+  "meta": {
+    "version": "RVR1960",
+    "versionName": "Reina-Valera 1960",
+    "language": "es",
+    "testament": "NT",
+    "testamentName": "Nuevo Testamento",
+    "bookCode": "JHN",
+    "bookName": "Juan",
+    "totalBookChapters": 21
+  },
+  "chapters": [
+    {
+      "chapter": 1,
+      "sectionTitle": "El Verbo hecho carne y el testimonio de Juan",
+      "ideas": ["Encarnación", "Luz y tinieblas", "Testimonio"],
+      "totalVerses": 51
+    },
+    {
+      "chapter": 2,
+      "sectionTitle": "Las bodas de Caná y la purificación del templo",
+      "ideas": ["Primer milagro", "Transformación", "Señales"],
+      "totalVerses": 25
+    },
+    {
+      "chapter": 3,
+      "sectionTitle": "El nuevo nacimiento y el amor de Dios al mundo",
+      "ideas": ["Nuevo nacimiento", "Amor divino", "Salvación", "Vida eterna"],
+      "totalVerses": 36
+    }
+  ]
+}
