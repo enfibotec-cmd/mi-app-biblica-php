@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Lee y decodifica un archivo JSON.
