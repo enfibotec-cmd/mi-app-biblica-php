@@ -4,7 +4,7 @@ $tipoError = isset($_GET['tipo']) ? $_GET['tipo'] : 'error_general';
 $detalle = isset($_GET['detalle']) ? $_GET['detalle'] : '';
 
 // 2. Leemos el archivo JSON de errores (con valores por defecto seguros)
-$rutaErrores = __DIR__ . '/data/errores.json';
+$rutaErrores = __DIR__ . '/data/error.json';
 $errores = [];
 
 if (file_exists($rutaErrores)) {
