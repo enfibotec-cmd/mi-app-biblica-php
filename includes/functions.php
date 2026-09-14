@@ -15,7 +15,8 @@ function cargarJSON(string $ruta): ?array {
  * Obtiene los datos de un libro específico desde data/libros/{CODE}.json
  */
 function obtenerDatosLibro(string $codigoLibro): ?array {
-    $codigoLimpio = strtoupper(preg_replace('/[^a-zA-Z0-9]/', '', $codigoLibro));
+    // Cambiamos strtoupper por strtolower para buscar en minúsculas
+    $codigoLimpio = strtolower(preg_replace('/[^a-zA-Z0-9]/', '', $codigoLibro));
     $ruta = __DIR__ . "/../data/libros/{$codigoLimpio}.json";
     return cargarJSON($ruta);
 }
