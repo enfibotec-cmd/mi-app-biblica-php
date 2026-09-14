@@ -1,1 +1,20 @@
-
+{
+  "libro_no_encontrado": {
+    "titulo": "📖 Libro no disponible",
+    "mensaje": "Lo sentimos, no pudimos encontrar el libro que estás buscando. Verifica el código o regresa al inicio.",
+    "icono": "😕",
+    "color": "#E74C3C"
+  },
+  "capitulo_no_encontrado": {
+    "titulo": "📄 Capítulo no disponible",
+    "mensaje": "El capítulo que solicitaste aún no está cargado en nuestro sistema.",
+    "icono": "🔍",
+    "color": "#F39C12"
+  },
+  "error_general": {
+    "titulo": "⚠️ Algo salió mal",
+    "mensaje": "Estamos experimentando problemas técnicos. Por favor, inténtalo de nuevo en unos minutos.",
+    "icono": "🛠️",
+    "color": "#34495E"
+  }
+}
