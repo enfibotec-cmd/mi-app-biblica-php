@@ -1,5 +1,4 @@
-
-  <footer class="footer mt-auto py-3 bg-body-tertiary border-top text-center text-muted small">
+<footer class="footer mt-auto py-3 bg-body-tertiary border-top text-center text-muted small">
     <div class="container">
       <span>Mi App Bíblica &copy; <?= date('Y') ?> &bull; Licencia MIT</span>
     </div>
