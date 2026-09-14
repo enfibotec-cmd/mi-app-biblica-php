@@ -1,22 +1,22 @@
-
 <?php
 require_once __DIR__ . '/includes/functions.php';
 
-// Obtener parámetros de URL con sanitizado y valores por defecto
-$codigoLibro = isset($_GET['libro']) ? strtoupper(trim($_GET['libro'])) : 'JHN';
+// 1. Obtener parámetros (forzando minúsculas para coincidir con jhn.json)
+$codigoLibro = isset($_GET['libro']) ? strtolower(trim($_GET['libro'])) : 'jhn';
 $numCapitulo = isset($_GET['cap']) ? (int)$_GET['cap'] : 1;
 
-// Cargar datos
+// 2. Cargar datos y validar existencia
 $datosLibro = obtenerDatosLibro($codigoLibro);
 
 if (!$datosLibro) {
-    die("Error: No se encontró el libro solicitado ($codigoLibro).");
+    header("Location: /error.php?tipo=libro_no_encontrado&detalle=" . urlencode($codigoLibro));
+    exit;
 }
 
 $capituloActual = obtenerCapitulo($datosLibro, $numCapitulo);
 $tituloPagina = "{$datosLibro['meta']['bookName']} {$capituloActual['chapter']} - {$datosLibro['meta']['version']}";
 
-// Renderizado de vistas
+// 3. Renderizar estructura
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/navbar.php';
 require_once __DIR__ . '/includes/offcanvas.php';
@@ -30,24 +30,26 @@ require_once __DIR__ . '/includes/offcanvas.php';
     </div>
     <h1 class="display-6 fw-bold"><?= htmlspecialchars($capituloActual['sectionTitle']) ?></h1>
 
-    <!-- Badges de Ideas Clave -->
     <div class="d-flex flex-wrap gap-2 my-3">
-      <?php foreach ($capituloActual['ideas'] as $idea): ?>
-        <span class="badge text-bg-primary fs-6 fw-normal">#<?= htmlspecialchars($idea) ?></span>
-      <?php endforeach; ?>
+      <?php if (!empty($capituloActual['ideas'])): ?>
+        <?php foreach ($capituloActual['ideas'] as $idea): ?>
+          <span class="badge text-bg-primary fs-6 fw-normal">#<?= htmlspecialchars($idea) ?></span>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </div>
   </header>
 
   <hr class="my-4">
 
-  <!-- Texto Bíblico -->
-  <article class="lh-lg fs-5 bible-text">
-    <p class="text-secondary fst-italic">
+  <article class="lh-lg fs-5 bible-text mb-5">
+    <p class="text-secondary fst-italic mb-3">
       Lectura del capítulo <?= $capituloActual['chapter'] ?> de <?= htmlspecialchars($datosLibro['meta']['bookName']) ?>.
     </p>
+    <?php if (isset($capituloActual['text'])): ?>
+      <?= nl2br(htmlspecialchars($capituloActual['text'])) ?>
+    <?php endif; ?>
   </article>
 
-  <!-- Navegación entre Capítulos (Anterior / Siguiente) -->
   <nav class="d-flex justify-content-between my-5">
     <?php if ($capituloActual['chapter'] > 1): ?>
       <a href="?libro=<?= urlencode($codigoLibro) ?>&cap=<?= $capituloActual['chapter'] - 1 ?>" class="btn btn-outline-secondary">
